@@ -1,0 +1,105 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <link th:href="@{/css/navBar.css}" rel="stylesheet" / >
+    <link rel="stylesheet" th:href="@{/css/general.css}" />
+    <title>Product</title>
+  </head>
+
+  <body>
+    <header>
+      <div th:replace="navigationBar :: navBar"></div>
+    </header>
+
+    <div class="container">
+      <div class="form-container">
+        <form
+          class="form"
+          th:action="@{saveProduct}"
+          th:object="${theProduct}"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div>
+            <input type="hidden" th:field="*{productId}" />
+          </div>
+          <div class="form-elements">
+            <label for="productName">product Name</label>
+            <input
+              type="text"
+              th:field="*{productName}"
+              name="productName"
+              class="form-input"
+              placeholder="product Name"
+            />
+          </div>
+          <div class="form-elements">
+            <label for="productDescription">Product Description</label>
+            <input
+              type="text"
+              th:field="*{productDescription}"
+              name="productDescription"
+              class="form-input"
+              placeholder="Product Description"
+            />
+          </div>
+          <div class="form-elements">
+            <label for="price">Price</label>
+            <input
+              type="text"
+              th:field="*{price}"
+              name="price"
+              class="form-input"
+              placeholder="Price"
+            />
+          </div>
+
+          <div class="form-elements">
+            <label for="availableStock">Stocks Available</label>
+            <input
+              type="text"
+              th:field="*{availableStock}"
+              name="availableStock"
+              class="form-input"
+              placeholder="Stocks Available"
+            />
+          </div>
+
+          <div class="form-elements">
+            <label for="category">Category</label>
+            <select th:field="*{categoryId}" class="form-input">
+              <option value="0">Select Category</option>
+              <option
+                th:each="i : ${categoryList}"
+                th:value="${i.categoryId}"
+                th:text="${i.categoryName}"
+              />
+            </select>
+          </div>
+
+          <div class="form-elements">
+            <label for="supplier">Supplier</label>
+            <input
+              th:field = "*{supplierId}"	
+              type="text"
+              name="supplier"
+              class="form-input"
+              placeholder="Supplier"
+            />
+          </div>
+
+          <div class="form-elements">
+            <label for="productImage">Product Image</label>
+            <label class="form-input">
+              <input type="file" name="productImage" />
+            </label>
+          </div>
+
+          <div>
+            <input class="form-button" type="submit" value="Save" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

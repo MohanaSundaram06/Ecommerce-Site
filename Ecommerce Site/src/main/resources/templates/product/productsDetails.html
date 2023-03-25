@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>Product Details</title>
+    <link th:href="@{/css/navBar.css}" rel="stylesheet" / >
+    <link rel="stylesheet" th:href="@{/css/galleryStyle.css}" />
+  </head>
+
+  <body></body>
+  <header>
+    <div th:replace="navigationBar :: navBar"></div>
+  </header>
+
+  <section class="gallery-grid gallery-grid--2-cols">
+    <img
+      th:src="@{/pandas/product/display(id = ${productDetails.productId})}"
+      alt=""
+    />
+
+    <div class="product-details">
+      <div class="product-description">
+        <h2 th:text="${productDetails.productName}"></h2>
+        <p th:text="${productDetails.productDescription}">></p>
+        <p class="product-description--price">
+          Price : <span th:text="${productDetails.price}" />
+        </p>
+        <p>
+          Stocks Available : <span th:text="${productDetails.availableStock}" />
+        </p>
+      </div>
+      <div>
+        <form
+          th:action="@{saveToCart(productId = ${productDetails.productId})}"
+          method="post"
+          th:object="${cart}"
+          class="product-quantity"
+        >
+          <input type="hidden" th:field="*{cartId}" />
+          <label for="quantity">Select Quantity</label>
+          <select th:field="*{quantity}" name="quantity">
+            <option th:value="1" th:text="1">Select Quantity</option>
+            <option
+              th:each="i : ${#numbers.sequence(2, productDetails.availableStock)} "
+              th:value="${i}"
+              th:text="${i}"
+            />
+          </select>
+
+          <input class="product-Buy-btn" type="submit" value="Buy" />
+        </form>
+      </div>
+    </div>
+  </section>
+</html>

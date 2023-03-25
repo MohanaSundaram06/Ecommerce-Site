@@ -1,0 +1,41 @@
+.nav-bar {
+  background-color: #343a40;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0% 0% 5% 5%;
+  margin-bottom: 2rem;
+}
+
+.text-link {
+  display: flex;
+  gap: 10px;
+}
+
+.text-link-home {
+  text-decoration: none;
+  color: #f1f3f5;
+  font-size: 1.6rem;
+  margin-left: 60px;
+  padding: 6px 12px 6px 12px;
+}
+
+.text-link a {
+  text-decoration: none;
+  color: #f1f3f5;
+  font-size: 0.9rem;
+  margin-right: 8px;
+  padding: 6px 12px 6px 12px;
+}
+
+.text-link a:hover,
+.text-link a:active {
+  background-color: #495057;
+  color: #a5d8ff;
+  border-radius: 10%;
+  -webkit-border-radius: 10%;
+  -moz-border-radius: 10%;
+  -ms-border-radius: 10%;
+  -o-border-radius: 10%;
+}

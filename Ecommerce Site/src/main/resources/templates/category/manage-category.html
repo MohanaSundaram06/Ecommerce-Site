@@ -1,0 +1,51 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <link th:href="@{/css/navBar.css}" rel="stylesheet" / >
+    <link rel="stylesheet" th:href="@{/css/general.css}" />
+    <link rel="stylesheet" th:href="@{/css/tables.css}" />
+    <title>Category</title>
+  </head>
+
+  <body>
+    <header>
+      <div th:replace="navigationBar :: navBar"></div>
+    </header>
+
+    <div class="category-conatiner">
+      <a th:href="@{addCategory}" class="table-button">Add New Category</a>
+      <table class="table-conatiner">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Category Name</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="tempCategory : ${theCategory}">
+            <td th:text="${tempCategory.categoryId}" />
+            <td th:text="${tempCategory.categoryName}" />
+            <td th:text="${tempCategory.categoryDescription}" />
+            <td>
+              <a
+                class="table-button table-EditButton"
+                th:href="@{editCategory(categoryId = ${tempCategory.categoryId})}"
+                >Edit</a
+              >
+              <a
+                class="table-button table-DeleteButton"
+                th:href="@{deleteCategory(categoryId = ${tempCategory.categoryId})}"
+                onclick="if(!(confirm('Are sure do you want to delete this category?'))) return false"
+                >Delete</a
+              >
+            </td>
+          </tr>
+        </tbody>
+
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+</html>

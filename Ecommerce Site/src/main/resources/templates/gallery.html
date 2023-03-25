@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>Product Gallery</title>
+    <link th:href="@{/css/navBar.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/galleryStyle.css}" />
+  </head>
+  <body>
+    <header>
+      <div th:replace="navigationBar :: navBar"></div>
+    </header>
+
+    <section>
+      <div class="gallery-grid">
+        <div
+          th:each=" tempProductDetails : ${productDetails}"
+          class="gallery-grid-items"
+        >
+          <a
+            th:href="@{cart/productDetails(productId= ${tempProductDetails.productId})}"
+          >
+            <img
+              th:src="@{product/display(id = ${tempProductDetails.productId})}"
+              style="width: 16rem; height: 16rem"
+              alt=""
+            />
+          </a>
+          <h3 th:text="${tempProductDetails.productName}" />
+          <div>
+            <p>Price :</p>
+            <span th:text="${tempProductDetails.price}" />
+          </div>
+          <!-- <div>
+            <p>Stocks :</p>
+            <span th:text="${tempProductDetails.availableStock}" />
+          </div> -->
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

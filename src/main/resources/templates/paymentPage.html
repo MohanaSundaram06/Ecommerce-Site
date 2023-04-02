@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>Payment Confirmation</title>
+    <link th:href="@{/css/navBar.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/galleryStyle.css}" />
+    <link rel="stylesheet" th:href="@{/css/tables.css}" />
+    <link rel="stylesheet" th:href="@{/css/general.css}" />
+  </head>
+  <body>
+    <header>
+      <div th:replace="navigationBar :: navBar"></div>
+    </header>
+    <section>
+      <div class="container">
+        <h2>Payment Gateway</h2>
+        <div class="form-container">
+          <form th:action="@{processPayment}" class="form" method="post">
+            <div class="form-elements">
+              <label for="Name">Card Holder Name</label>
+              <input
+                type="text"
+                name="Name"
+                class="form-input"
+                required
+                placeholder="Name"
+              />
+            </div>
+            <div class="form-elements">
+              <label for="CardNumber">Card Number</label>
+              <input
+                type="text"
+                required
+                name="CardNumber"
+                class="form-input"
+                placeholder="Card Number"
+              />
+            </div>
+            <div class="form-elements">
+              <label for="Expiry">Expiry</label>
+              <input
+                type="text"
+                required
+                name="Expiry"
+                class="form-input"
+                placeholder="Expiry Date"
+              />
+            </div>
+            <div class="form-elements">
+              <label for="Expiry">CVV / CVC</label>
+              <input
+                type="text"
+                required
+                name="Expiry"
+                class="form-input"
+                placeholder="CVV/CVC"
+              />
+            </div>
+
+            <div>
+              <input
+                class="pay-button"
+                type="submit"
+                th:value="Pay+ '  '+Rs.+${total} "
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

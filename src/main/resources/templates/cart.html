@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>My Cart</title>
+    <link th:href="@{/css/navBar.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/galleryStyle.css}" />
+    <link rel="stylesheet" th:href="@{/css/tables.css}" />
+    <link rel="stylesheet" th:href="@{/css/general.css}" />
+  </head>
+  <body>
+    <header>
+      <div th:replace="navigationBar :: navBar"></div>
+    </header>
+    <section class="category-conatiner">
+      <h1>Your Cart</h1>
+      <table class="table-conatiner">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Sub Total</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="item : ${cartDetails}">
+            <td th:text="${item.productName}" />
+            <td th:text="${item.quantity}" />
+            <td th:text="${item.price}" />
+            <td th:text="${item.price * item.quantity}" />
+            <td>
+              <a
+                class="table-EditButton table-Button"
+                th:href="@{updateCartItem(cartId = ${item.cartId})}"
+                >Change Quantity</a
+              >
+              <a
+                class="table-DeleteButton table-Button"
+                th:href="@{deleteCartItem(id = ${item.cartId})}"
+                onclick="if(!(confirm('Are sure do you want to remove this item?'))) return false"
+                >Remove</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="product-description--price">
+        Total : <span th:text="${total}"></span>
+      </h2>
+
+      <div class="cart-nav">
+        <a th:href="@{/pandas/products}">Continue Shopping</a>
+        <a style="background-color: #37b24d" th:href="@{payment}"
+          >Proceed to Payment</a
+        >
+      </div>
+    </section>
+  </body>
+</html>

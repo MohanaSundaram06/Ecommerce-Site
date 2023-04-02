@@ -1,0 +1,52 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <link th:href="@{/css/navBar.css}" rel="stylesheet" / >
+    <link rel="stylesheet" th:href="@{/css/general.css}" />
+    <title>Category</title>
+  </head>
+
+  <body>
+    <header>
+      <div th:replace="navigationBar :: navBar"></div>
+    </header>
+
+    <div class="container">
+      <div class="form-container">
+        <form
+          class="form"
+          th:action="@{saveCategory}"
+          th:object="${theCategory}"
+          method="post"
+        >
+          <div>
+            <input type="hidden" th:field="*{categoryId}" />
+          </div>
+          <div class="form-elements">
+            <label for="categoryName">Category Name</label>
+            <input
+              type="text"
+              th:field="*{categoryName}"
+              name="categoryName"
+              class="form-input"
+              placeholder="Category Name"
+            />
+          </div>
+          <div class="form-elements">
+            <label for="categoryDescription">Category Description</label>
+            <input
+              type="text"
+              th:field="*{categoryDescription}"
+              name="categoryDescription"
+              class="form-input"
+              placeholder="Category Description"
+            />
+          </div>
+          <div>
+            <input class="form-button" type="submit" value="Save" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

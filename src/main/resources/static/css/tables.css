@@ -1,0 +1,63 @@
+.category-conatiner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.table-conatiner {
+  border-collapse: collapse;
+  border: 4px solid rgb(19, 19, 19);
+  background-color: rgb(19, 19, 19);
+  display: inline-block;
+  text-align: center;
+  opacity: 0.8;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.table-conatiner td,
+th {
+  border: 1px solid #f1f3f5;
+}
+
+.table-conatiner th {
+  color: #e6fcf5;
+  padding: 8px;
+  font-size: 1rem;
+}
+
+.table-conatiner td {
+  color: #e6fcf5;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.table-Button {
+  font-size: 0.7rem;
+  font-weight: bold;
+  margin-left: 4px;
+  background-color: #ff922b;
+  padding: 5px 20px 5px 20px;
+  color: #f8f9fa;
+  text-decoration: none;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.table-EditButton {
+  background-color: #37b24d !important;
+  color: white;
+}
+
+.table-DeleteButton {
+  background-color: #e03131 !important;
+  color: white;
+}

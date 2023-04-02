@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="/css/navBar.css" rel="stylesheet" / >
+    <title>Fragments</title>
+  </head>
+  <body>
+    <nav class="nav-bar" th:fragment="navBar">
+     
+      <a class="text-link-home" th:href="@{/pandas/home}">Pandas</a>
+      <div class="text-link">
+        <a th:href="@{/pandas/home}"> Home </a>
+        <a th:href="@{/pandas/login}"> Login </a>
+        <a th:href="@{/pandas/register}"> Register </a>
+        <a th:href="@{/pandas/about}"> About us </a>
+        <a
+          sec:authorize="hasAuthority('Vendor')"
+          th:href="@{/pandas/product/manage-products}"
+          >Manage Products</a
+        >
+        <a
+          sec:authorize="hasAuthority('Vendor')"
+          th:href="@{/pandas/category/manage-category}"
+          >Manage Category</a
+        >
+        <!-- <a th:href="@{/pandas/products}">Products</a>  -->
+        <a
+          sec:authorize="hasAuthority('Customer')"
+          th:href="@{/pandas/cart/yourCart}"
+          >Cart</a
+        >
+        <a
+          sec:authorize="hasAuthority('Customer')"
+          th:href="@{/pandas/orders/myOrders}"
+          >Orders</a
+        >
+        <div sec:authorize="isAuthenticated()" class="userLogout">
+          <a sec:authentication="name">Username</a>
+          <a th:href="@{/logout}"> Logout</a>
+        </div>
+      </div>
+    </nav>
+
+    <footer>
+      <div></div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <link th:href="@{/css/navBar.css}" rel="stylesheet" / >
+    <link rel="stylesheet" th:href="@{/css/general.css}" />
+    <link rel="stylesheet" th:href="@{/css/galleryStyle.css}" />
+    <link rel="stylesheet" th:href="@{/css/tables.css}" />
+    <title>My Orders</title>
+  </head>
+
+  <body>
+    <header>
+      <div th:replace="navigationBar :: navBar"></div>
+    </header>
+
+    <div class="category-conatiner">
+      <h2>Your Orders</h2>
+      <table class="table-conatiner">
+        <thead>
+          <tr>
+            <th>Order Id</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="temporders : ${orders}">
+            <td th:text="${temporders.orderId}" />
+            <td th:text="${temporders.productName}" />
+            <td th:text="${temporders.quantity}" />
+            <td th:text="${temporders.price}" />
+            <td th:text="${temporders.total}" />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

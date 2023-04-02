@@ -1,0 +1,61 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <link th:href="@{/css/navBar.css}" rel="stylesheet" / >
+    <link rel="stylesheet" th:href="@{/css/general.css}" />
+    <link rel="stylesheet" th:href="@{/css/tables.css}" />
+    <title>Products</title>
+  </head>
+
+  <body>
+    <header>
+      <div th:replace="navigationBar :: navBar"></div>
+    </header>
+
+    <div class="category-conatiner">
+      <a th:href="addProduct" class="table-Button">Add New Product</a>
+      <table class="table-conatiner">
+        <thead>
+          <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Product Description</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Product Image</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="tempProduct : ${theProduct}">
+            <td th:text="${tempProduct.productId}" />
+            <td th:text="${tempProduct.productName}" />
+            <td th:text="${tempProduct.productDescription}" />
+            <td th:text="${tempProduct.price}" />
+            <td th:text="${tempProduct.availableStock}" />
+            <td>
+              <img
+                th:src="@{display(id = ${tempProduct.productId})}"
+                style="width: 75; height: 75"
+              />
+            </td>
+
+            <td style="width: 200px">
+              <a
+                class="table-Button table-EditButton"
+                th:href="@{editProduct(productId = ${tempProduct.productId})}"
+                >Edit</a
+              >
+              <a
+                class="table-Button table-DeleteButton"
+                th:href="@{deleteProduct(productId = ${tempProduct.productId})}"
+                onclick="if(!(confirm('Are sure do you want to delete this category?'))) return false"
+                >Delete</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
